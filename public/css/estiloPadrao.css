@@ -1,0 +1,74 @@
+body{
+  background-color: #DCDCDC;
+  margin: auto 0;
+  width: 640px;
+}
+section{
+  margin: auto 0;
+  width: 640px;
+}
+header{
+  position: relative;
+}
+#textArea{
+  clear: both;
+  position: absolute;
+  bottom: 10px;
+  width: 49%;
+  border-radius: 30px;
+  padding-left: 2px;
+}
+.container-arrive{
+  border: 2px solid #dedede;
+  background-color: #f1f1f1;
+  border-radius: 10px;
+  padding: 20px;
+  width: 40%;
+}
+.container-send{
+  border: 2px solid #dedede;
+  background-color: #f1f1f1;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 10px 445px;
+  width: 40%;
+}
+.container-chat img {
+  float: left;
+  max-width: 20px;
+  width: 50%;
+  margin-right: 20px;
+  border-radius: 50%;
+}
+.container-chat img.right {
+  float: right;
+  margin-left: 20px;
+  margin-right:0;
+}
+.time-right {
+  float: right;
+  color: #aaa;
+}
+.time-left {
+  float: left;
+  color: #999;
+}
+.tela-chat{
+  clear: both;
+  padding: 0px 0px;
+  position: absolute;
+  bottom: 90px;
+  width: 50%;
+  border-radius: 30px;
+  writing-mode: horizontal -rl; 
+
+  /* border: 2px solid;
+  padding: 20px;
+  width: 900px;
+  resize: horizontal;
+  overflow: 40px; */
+
+} 
+.position{
+  padding-left: 20px;
+}
