@@ -20,7 +20,7 @@
             
             <div class="container-arrive">
               <img src="./Imagens/picAtendente.jpg" alt="Avatar" style="width:30%;">
-              <p>Hello. How are you today</p>
+              <p><div id="msgs"></div></p>
               <span class="time-right"11:00</span>
             </div>
 
@@ -36,7 +36,7 @@
             <div class="form-group">
               <div class="form-group">
               <label for="exampleFormControlTextarea1"></label>
-              <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="Digite aqui a sua mensagem"></textarea>
+              <textarea class="form-control" id="input" placeholder="Digite aqui a sua mensagem"></textarea>
             </div>
           </form>
         </div>
@@ -45,19 +45,27 @@
     </footer>
 
     <!--links de scripts-->
-    <div>
-          <!-- <script src="/socket.io/socket.io.js"></script> -->
-          <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-          integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-          <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"
-          integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
-          <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"
-          integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
-          <!-- <script src="Eventos/jquery-3.2.1.js"></script>
-          <script scr="Eventos/jquery.js"></script> -->
-          <script type="text/javascript"  src=""></script>
-    </div>
+ 
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 
-
+    <script>
+      const socket = io('http://localhost:3000')
+        socket.on('connect', function () {
+            $("#msgs").append( + socket.id + '<br>');
+            socket.emit(+ socket.id);
+        })
+        socket.on('msgs', function (msg) {
+            $("#msgs").append(msg + '<br>');
+        })
+        $("input").keydown(function (key) {
+            if (key.keyCode === 13) {
+                socket.emit('msgs', $(this).val());
+                // emite uma notificação para o servidor
+                $(this).val('');
+            }
+        })  
+        
+    </script>
   </body>
 </html>
